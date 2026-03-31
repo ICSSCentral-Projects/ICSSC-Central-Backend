@@ -4,7 +4,7 @@
   "info": {
     "singularName": "author",
     "pluralName": "authors",
-    "displayName": "Author",
+    "displayName": "Council Members",
     "description": "Create authors for your content"
   },
   "options": {
@@ -12,23 +12,33 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "member_name": {
       "type": "string"
     },
-    "avatar": {
+    "member_position": {
+      "type": "string"
+    },
+    "member_image": {
       "type": "media",
       "multiple": false,
-      "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
-    "email": {
-      "type": "string"
+    "member_group": {
+      "type": "enumeration",
+      "enum": [
+        "Adviser",
+        "Executive Board",
+        "Executive Staff",
+        "Board of Representatives"
+      ]
     },
-    "articles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::article.article",
-      "mappedBy": "author"
+    "member_order": {
+      "type": "integer"
     }
   }
 }

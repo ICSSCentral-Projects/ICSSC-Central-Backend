@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "organizations",
+  "info": {
+    "singularName": "organization",
+    "pluralName": "organizations",
+    "displayName": "Organization"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "partner_name": {
+      "type": "string"
+    },
+    "partner_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "partner_desc": {
+      "type": "text"
+    },
+    "websiteUrl": {
+      "type": "string"
+    },
+    "partner_type": {
+      "type": "enumeration",
+      "enum": [
+        "CICS Organizations",
+        "Partner",
+        "Sponsor"
+      ]
+    }
+  }
+}

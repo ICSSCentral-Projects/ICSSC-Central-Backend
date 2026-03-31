@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "foi_requests",
+  "info": {
+    "singularName": "foi-request",
+    "pluralName": "foi-requests",
+    "displayName": "FOI-Request"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "foi_title": {
+      "type": "string"
+    },
+    "refId": {
+      "type": "string"
+    },
+    "trackingNo": {
+      "type": "string"
+    },
+    "foi_status": {
+      "type": "enumeration",
+      "enum": [
+        "successful",
+        "pending",
+        "denied"
+      ]
+    },
+    "publishedDate": {
+      "type": "date"
+    },
+    "requestedBy": {
+      "type": "string"
+    },
+    "foi_affiliation": {
+      "type": "enumeration",
+      "enum": [
+        "UST Student",
+        "UST Faculty/Staff",
+        "Alumni",
+        "Organization",
+        "External (Non-thomasian)"
+      ]
+    },
+    "foi_category": {
+      "type": "enumeration",
+      "enum": [
+        "Academic",
+        "Financial",
+        "Facilities",
+        "Events",
+        "Others"
+      ]
+    },
+    "foi_purpose": {
+      "type": "text"
+    },
+    "supportingDoc": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "denialReason": {
+      "type": "text"
+    }
+  }
+}
