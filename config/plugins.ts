@@ -1,4 +1,4 @@
-export default ({ env }) => ({
+module.exports = ({ env }) => ({
   upload: {
     config: {
       provider: 'cloudinary',
@@ -9,7 +9,6 @@ export default ({ env }) => ({
       },
       actionOptions: {
         upload: {},
-        uploadStream: {},
         delete: {},
       },
     },
