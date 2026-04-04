@@ -3,9 +3,9 @@ export default ({ env }: { env: any }) => ({
     config: {
       provider: 'cloudinary',
       providerOptions: {
-         cloud_name: env('djfwceo4q'),
-        api_key: env('843748867399732'),
-        api_secret: env('TAxifivfxSZ0ktyDaVFBy15GYaU'),
+        cloud_name: env('CLOUDINARY_NAME'),
+        api_key: env('CLOUDINARY_KEY'),
+        api_secret: env('CLOUDINARY_SECRET'),
       },
       actionOptions: {
         upload: {},
