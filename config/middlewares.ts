@@ -22,7 +22,7 @@ const config: Core.Config.Middlewares = [
   config: {
     origin: [
       'https://icsscentral.netlify.app',
-      'https://your-project.vercel.app',
+      'https://icsscentral.vercel.app/',
     ],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     headers: ['Content-Type', 'Authorization'],
