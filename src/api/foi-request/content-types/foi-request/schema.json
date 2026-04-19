@@ -67,8 +67,11 @@
         "audios"
       ]
     },
-    "denialReason": {
+   "denialReason": {
       "type": "text"
+    },
+    "statusLog": {
+      "type": "json"
     }
   }
 }
