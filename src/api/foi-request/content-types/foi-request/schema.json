@@ -70,8 +70,10 @@
    "denialReason": {
       "type": "text"
     },
-    "statusLog": {
-      "type": "json"
-    }
+   "statusLog": {
+  "type": "component",
+  "repeatable": true,
+  "component": "foi.status-log-entry"
+}
   }
 }
