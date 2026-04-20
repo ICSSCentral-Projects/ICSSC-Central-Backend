@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_foi_status_log_entries",
+  "info": {
+    "displayName": "Status Log Entry",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "timestamp": {
+      "type": "datetime"
+    }
+  }
+}
