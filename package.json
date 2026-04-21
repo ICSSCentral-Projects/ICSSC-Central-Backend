@@ -27,6 +27,7 @@
     "react-router-dom": "^6.0.0",
     "@strapi/provider-upload-cloudinary": "^5.0.0",
     "styled-components": "^6.0.0"
+    "@strapi/provider-email-sendgrid": "latest",
   },
   "devDependencies": {
     "@types/node": "^20",
