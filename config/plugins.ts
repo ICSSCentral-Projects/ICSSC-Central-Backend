@@ -14,4 +14,17 @@ export default ({ env }: { env: any }) => ({
       },
     },
   },
+  email: {
+    config: {
+      provider: 'sendgrid',
+      providerOptions: {
+        apiKey: env('SENDGRID_API_KEY'),
+      },
+      settings: {
+        defaultFrom: 'ust.icssc.noreply@gmail.com',
+        defaultReplyTo: 'ust.icssc.noreply@gmail.com',
+        defaultFromName: 'UST ICSSC',
+      },
+    },
+  },
 });
