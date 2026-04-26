@@ -70,6 +70,12 @@
    "denialReason": {
       "type": "text"
     },
+    "denialReason": {
+  "type": "text"
+},
+"foi_email": {
+  "type": "string"
+},
    "statusLog": {
   "type": "component",
   "repeatable": true,
