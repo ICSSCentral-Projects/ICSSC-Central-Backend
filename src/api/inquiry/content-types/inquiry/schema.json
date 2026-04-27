@@ -33,6 +33,12 @@
         "Reviewed",
         "Resolved"
       ]
+    },
+    "adminReply": {
+      "type": "text"
+    },
+    "repliedAt": {
+      "type": "datetime"
     }
   }
 }
