@@ -72,11 +72,6 @@ export default {
         `,
       });
 
-      // Update repliedAt timestamp
-      await strapi.entityService.update('api::inquiry.inquiry', result.id, {
-        data: { repliedAt: new Date() },
-      });
-
     } catch (err) {
       console.error('Failed to send inquiry reply email:', err);
     }
