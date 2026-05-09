@@ -1,3 +1,5 @@
+📖 **New officers:** See the [Officer How-To Guide](./docs/OFFICER_GUIDE.md) for step-by-step instructions.
+
 # 🎓 ICSSC Central — UST CICS Student Council Website
 
 > The official web platform of the **Integrated CICS Student Council (ICSSC)** of the University of Santo Tomas. This system powers the council's public-facing website and its content management backend.
