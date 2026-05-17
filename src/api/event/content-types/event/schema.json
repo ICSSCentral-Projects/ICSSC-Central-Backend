@@ -19,7 +19,7 @@
       "targetField": "title"
     },
     "date": {
-      "type": "datetime"
+      "type": "date"
     },
     "content": {
       "type": "blocks"
@@ -46,6 +46,12 @@
         "Celebration",
         "Sports"
       ]
+    },
+    "location": {
+      "type": "string"
+    },
+    "time": {
+      "type": "string"
     }
   }
 }

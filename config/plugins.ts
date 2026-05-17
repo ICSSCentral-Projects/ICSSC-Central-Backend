@@ -1,30 +1,35 @@
-export default ({ env }: { env: any }) => ({
-  upload: {
-    config: {
-      provider: 'cloudinary',
-      providerOptions: {
-        cloud_name: env('CLOUDINARY_NAME'),
-        api_key: env('CLOUDINARY_KEY'),
-        api_secret: env('CLOUDINARY_SECRET'),
-      },
-      actionOptions: {
-        upload: {},
-        uploadStream: {},
-        delete: {},
-      },
-    },
-  },
-  email: {
-    config: {
-      provider: 'sendgrid',
-      providerOptions: {
-        apiKey: env('SENDGRID_API_KEY'),
-      },
-      settings: {
-        defaultFrom: 'ust.icssc.noreply@gmail.com',
-        defaultReplyTo: 'ust.icssc.noreply@gmail.com',
-        defaultFromName: 'UST ICSSC',
+export default ({ env }: { env: any }) => {
+  const isProd = env('NODE_ENV') === 'production';
+  return {
+    upload: {
+      config: isProd ? {
+        provider: 'cloudinary',
+        providerOptions: {
+          cloud_name: env('CLOUDINARY_NAME'),
+          api_key: env('CLOUDINARY_KEY'),
+          api_secret: env('CLOUDINARY_SECRET'),
+        },
+        actionOptions: {
+          upload: {},
+          uploadStream: {},
+          delete: {},
+        },
+      } : {
+        provider: 'local',
       },
     },
-  },
-});
+    email: {
+      config: {
+        provider: 'sendgrid',
+        providerOptions: {
+          apiKey: env('SENDGRID_API_KEY'),
+        },
+        settings: {
+          defaultFrom: 'ust.icssc.noreply@gmail.com',
+          defaultReplyTo: 'ust.icssc.noreply@gmail.com',
+          defaultFromName: 'UST ICSSC',
+        },
+      },
+    },
+  };
+};

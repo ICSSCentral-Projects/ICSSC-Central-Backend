@@ -20,14 +20,7 @@
     "trackingNo": {
       "type": "string"
     },
-    "foi_status": {
-      "type": "enumeration",
-      "enum": [
-        "successful",
-        "pending",
-        "denied"
-      ]
-    },
+
     "publishedDate": {
       "type": "date"
     },
@@ -67,19 +60,26 @@
         "audios"
       ]
     },
-   "denialReason": {
+    "denialReason": {
       "type": "text"
     },
-    "denialReason": {
-  "type": "text"
-},
-"foi_email": {
-  "type": "string"
-},
-   "statusLog": {
-  "type": "component",
-  "repeatable": true,
-  "component": "foi.status-log-entry"
-}
+    "foi_email": {
+      "type": "string"
+    },
+    "statusLog": {
+      "type": "component",
+      "repeatable": true,
+      "component": "foi.status-log-entry"
+    },
+    "request_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "processing",
+        "successful",
+        "unsuccessful"
+      ],
+      "default": "pending"
+    }
   }
 }

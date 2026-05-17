@@ -494,48 +494,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
-  collectionName: 'authors';
-  info: {
-    description: 'Create authors for your content';
-    displayName: 'Council Members';
-    pluralName: 'authors';
-    singularName: 'author';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::author.author'
-    > &
-      Schema.Attribute.Private;
-    member_group: Schema.Attribute.Enumeration<
-      [
-        'Adviser',
-        'Executive Board',
-        'Executive Staff',
-        'Board of Representatives',
-      ]
-    >;
-    member_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    member_name: Schema.Attribute.String;
-    member_order: Schema.Attribute.Integer;
-    member_position: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiEventEvent extends Struct.CollectionTypeSchema {
   collectionName: 'events';
   info: {
@@ -554,14 +512,16 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime;
+    date: Schema.Attribute.Date;
     externalLink: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
+    location: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
+    time: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -598,9 +558,6 @@ export interface ApiFoiRequestFoiRequest extends Struct.CollectionTypeSchema {
     >;
     foi_email: Schema.Attribute.String;
     foi_purpose: Schema.Attribute.Text;
-    foi_status: Schema.Attribute.Enumeration<
-      ['successful', 'pending', 'denied']
-    >;
     foi_title: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -611,6 +568,10 @@ export interface ApiFoiRequestFoiRequest extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     publishedDate: Schema.Attribute.Date;
     refId: Schema.Attribute.String;
+    request_status: Schema.Attribute.Enumeration<
+      ['pending', 'processing', 'successful', 'unsuccessful']
+    > &
+      Schema.Attribute.DefaultTo<'pending'>;
     requestedBy: Schema.Attribute.String;
     statusLog: Schema.Attribute.Component<'foi.status-log-entry', true>;
     supportingDoc: Schema.Attribute.Media<
@@ -686,73 +647,6 @@ export interface ApiInquiryInquiry extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     repliedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiOrganizationOrganization
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'organizations';
-  info: {
-    displayName: 'Organization';
-    pluralName: 'organizations';
-    singularName: 'organization';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::organization.organization'
-    > &
-      Schema.Attribute.Private;
-    partner_desc: Schema.Attribute.Text;
-    partner_image: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
-    partner_name: Schema.Attribute.String;
-    partner_type: Schema.Attribute.Enumeration<
-      ['CICS Organizations', 'Partner', 'Sponsor']
-    >;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    websiteUrl: Schema.Attribute.String;
-  };
-}
-
-export interface ApiProgramProgram extends Struct.CollectionTypeSchema {
-  collectionName: 'programs';
-  info: {
-    displayName: 'Program';
-    pluralName: 'programs';
-    singularName: 'program';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::program.program'
-    > &
-      Schema.Attribute.Private;
-    pogram_title: Schema.Attribute.String;
-    program_link: Schema.Attribute.String;
-    program_order: Schema.Attribute.Integer;
-    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1272,13 +1166,10 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::article.article': ApiArticleArticle;
-      'api::author.author': ApiAuthorAuthor;
       'api::event.event': ApiEventEvent;
       'api::foi-request.foi-request': ApiFoiRequestFoiRequest;
       'api::global.global': ApiGlobalGlobal;
       'api::inquiry.inquiry': ApiInquiryInquiry;
-      'api::organization.organization': ApiOrganizationOrganization;
-      'api::program.program': ApiProgramProgram;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

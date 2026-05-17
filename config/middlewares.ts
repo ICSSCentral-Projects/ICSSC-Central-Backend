@@ -12,6 +12,7 @@ const config: Core.Config.Middlewares = [
           'connect-src': ["'self'", 'https:'],
           'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
           'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
+          'object-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com'],
           upgradeInsecureRequests: null,
         },
       },
@@ -23,6 +24,8 @@ const config: Core.Config.Middlewares = [
       origin: [
         'https://icsscentral.netlify.app',
         'https://icsscentral.vercel.app',
+        'http://localhost:5173',
+        'http://localhost:5174',
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
       headers: ['Content-Type', 'Authorization'],
