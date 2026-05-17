@@ -69,6 +69,27 @@ export default {
           }
         }
       }
+
+      // Production Migration: Convert old timestamp dates to YYYY-MM-DD in events
+      try {
+        const events = await strapi.db.query('api::event.event').findMany();
+        for (const event of events) {
+          if (event.date && !String(event.date).includes('-')) {
+            // It's likely a timestamp string or number
+            const parsed = new Date(Number(event.date));
+            if (!isNaN(parsed.getTime())) {
+              const formattedDate = parsed.toISOString().split('T')[0];
+              await strapi.db.query('api::event.event').update({
+                where: { id: event.id },
+                data: { date: formattedDate }
+              });
+              strapi.log.info(`Migrated event ${event.id} date to ${formattedDate}`);
+            }
+          }
+        }
+      } catch (err) {
+        strapi.log.error('Migration error:', err);
+      }
     } catch (err) {
       strapi.log.error('Failed to bootstrap permissions:', err);
     }
