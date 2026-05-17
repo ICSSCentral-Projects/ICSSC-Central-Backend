@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface FoiStatusLogEntry extends Struct.ComponentSchema {
+  collectionName: 'components_foi_status_log_entries';
+  info: {
+    displayName: 'Status Log Entry';
+    icon: 'clock';
+  };
+  attributes: {
+    text: Schema.Attribute.String & Schema.Attribute.Required;
+    timestamp: Schema.Attribute.DateTime;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +77,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'foi.status-log-entry': FoiStatusLogEntry;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
