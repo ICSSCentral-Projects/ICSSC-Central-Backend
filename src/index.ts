@@ -86,6 +86,9 @@ export default {
             }
           }
         }
+      } catch (err) {
+        strapi.log.error('Failed to migrate dates:', err);
+      }
     } catch (err) {
       strapi.log.error('Failed to bootstrap permissions:', err);
     }
