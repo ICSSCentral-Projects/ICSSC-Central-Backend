@@ -30,7 +30,7 @@ Before you can do anything, you need access to the following services. Ask your 
 |---------|--------------|-----------------|
 | GitHub | Source code | github.com — ask to be added to the org |
 | Railway | Backend hosting + database | railway.app — ask for project invite |
-| Netlify | Frontend hosting | netlify.com — ask for team invite |
+| Vercel | Frontend hosting | vercel.com — ask for team invite |
 | Cloudinary | Image/media storage | cloudinary.com — ask for account credentials |
 | Supabase | Auth & supplemental DB | supabase.com — ask for project invite |
 | SendGrid | Email sending | sendgrid.com — ask for account credentials |
@@ -277,9 +277,9 @@ This token is used by the frontend to authenticate its requests to the backend.
 3. Click **"Regenerate"** or delete and create a new one with the same permissions (Full Access)
 4. Copy the new token
 5. Update `VITE_STRAPI_TOKEN` in:
-   - Netlify: Site settings → Environment variables → update `VITE_STRAPI_TOKEN`
+   - Vercel: Site settings → Environment variables → update `VITE_STRAPI_TOKEN`
    - Your local `.env` file in `icsscentral-website/`
-6. Trigger a new deployment on Netlify so the new token takes effect
+6. Trigger a new deployment on Vercel so the new token takes effect
 
 ### Rotating Backend Secret Keys
 
@@ -375,17 +375,17 @@ npm run build   # Builds the Strapi admin panel
 
 ## 12. Deploying Updates
 
-### Frontend Deployment (Netlify)
+### Frontend Deployment (Vercel)
 
-Netlify is connected to the GitHub repository. Deployments are automatic:
+Vercel is connected to the GitHub repository. Deployments are automatic:
 
 1. Push your changes to the `main` branch on GitHub
-2. Netlify detects the push and starts building automatically
-3. Monitor the build in the Netlify dashboard under **Deploys**
+2. Vercel detects the push and starts building automatically
+3. Monitor the build in the Vercel dashboard under **Deploys**
 4. Once the build completes (usually 1–3 minutes), the site is live
 
 To manually trigger a deploy without code changes:
-- Netlify dashboard → **Deploys** → **Trigger deploy** → **Deploy site**
+- Vercel dashboard → **Deploys** → **Trigger deploy** → **Deploy site**
 
 ### Backend Deployment (Railway)
 
@@ -405,7 +405,7 @@ For environment variable changes:
 ### The website shows old content / changes aren't reflecting
 
 - **Most likely cause:** The browser or CDN is caching the old content
-- **Fix:** Hard refresh (`Ctrl + Shift + R` or `Cmd + Shift + R`). If the issue persists on multiple devices, trigger a new Netlify deployment (Netlify dashboard → Deploys → Trigger deploy)
+- **Fix:** Hard refresh (`Ctrl + Shift + R` or `Cmd + Shift + R`). If the issue persists on multiple devices, trigger a new Vercel deployment (Vercel dashboard → Deploys → Trigger deploy)
 
 ### A new Council Member isn't showing on the website
 
@@ -421,7 +421,7 @@ For environment variable changes:
 ### The contact form isn't submitting
 
 - **Check:** The Strapi backend must be running and reachable
-- **Check:** Confirm `VITE_STRAPI_URL` and `VITE_STRAPI_TOKEN` in the Netlify environment variables are correct and up to date
+- **Check:** Confirm `VITE_STRAPI_URL` and `VITE_STRAPI_TOKEN` in the Vercel environment variables are correct and up to date
 - **Developer fix:** Open the browser console (F12 → Console) and look for error messages when submitting the form
 
 ### Strapi admin won't log in / shows "invalid credentials"
@@ -445,7 +445,7 @@ For environment variable changes:
 ### "Missing required environment variable" error on the website
 
 - The frontend validates required env vars on startup
-- **Fix:** Check Netlify → Site settings → Environment variables and ensure all required vars (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_STRAPI_URL`) are present
+- **Fix:** Check Vercel → Site settings → Environment variables and ensure all required vars (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_STRAPI_URL`) are present
 - Trigger a new deployment after updating
 
 ---
@@ -463,8 +463,8 @@ For environment variable changes:
 | Upload media/images | Strapi Admin → Media Library |
 | Manage admin users | Strapi Admin → Settings → Administration → Users |
 | Rotate API token | Strapi Admin → Settings → API Tokens |
-| View deployment logs | Netlify dashboard (frontend) / Railway dashboard (backend) |
-| Update environment variables | Netlify → Site settings → Env vars (frontend) / Railway → Variables (backend) |
+| View deployment logs | Vercel dashboard (frontend) / Railway dashboard (backend) |
+| Update environment variables | Vercel → Site settings → Env vars (frontend) / Railway → Variables (backend) |
 
 ---
 
