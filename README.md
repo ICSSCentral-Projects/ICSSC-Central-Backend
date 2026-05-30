@@ -42,7 +42,7 @@ The backend is the **single source of truth** for all dynamic content (events, a
 ┌─────────────────────────────┐       REST API        ┌──────────────────────────────┐
 │   icsscentral-website        │ ──────────────────►  │   ICSSC-Central-Backend       │
 │   React + Vite + Tailwind    │ ◄──────────────────   │   Strapi CMS v5               │
-│   Deployed on vercel        │      JSON responses   │   Deployed on Railway         │
+│   Deployed on Vercel        │      JSON responses   │   Deployed on Railway         │
 └─────────────────────────────┘                        └──────────────────────────────┘
          │                                                         │
          │                                                         │
@@ -77,7 +77,7 @@ The backend is the **single source of truth** for all dynamic content (events, a
 - **Supabase** — Auth and supplemental database
 - **Cloudinary** — Image delivery
 - **Motion (Framer Motion)** — Animations
-- **Deployed on vercel**
+- **Deployed on Vercel**
 
 ---
 
@@ -114,7 +114,7 @@ icsscentral-website/         ← React Frontend
 │   │   └── sanitize.ts      ← HTML sanitization (DOMPurify)
 │   └── assets/              ← Static images and icons
 ├── guidelines/Guidelines.md ← Developer guidelines
-└── vercel.toml             ← vercel deployment config
+└── Vercel.toml             ← Vercel deployment config
 ```
 
 ---
@@ -377,10 +377,10 @@ The Strapi backend is hosted on [Railway](https://railway.app). The current prod
 - Database: PostgreSQL instance is also on Railway
 - Logs and deployments are managed via the Railway dashboard
 
-### vercel (Frontend Hosting)
-The React frontend is deployed on [vercel](https://vercel.com). Deployments trigger automatically on pushes to the main branch.
+### Vercel (Frontend Hosting)
+The React frontend is deployed on [Vercel](https://Vercel.com). Deployments trigger automatically on pushes to the main branch.
 
-- The `vercel.toml` configures the build command (`npm run build`) and publish directory (`dist`)
+- The `Vercel.toml` configures the build command (`npm run build`) and publish directory (`dist`)
 - The SPA redirect rule (`/* → /index.html`) ensures React Router works correctly
 
 ### Cloudinary (Media Storage)
@@ -417,22 +417,22 @@ railway up
 git push origin main
 ```
 
-### Frontend — vercel
+### Frontend — Vercel
 
 ```bash
 # Build for production
 npm run build
 # Output goes to /dist
 
-# vercel auto-deploys on git push to the connected branch
+# Vercel auto-deploys on git push to the connected branch
 git push origin main
 ```
 
 To manually deploy:
 ```bash
-# Install vercel CLI if needed
-npm install -g vercel-cli
-vercel deploy --prod --dir=dist
+# Install Vercel CLI if needed
+npm install -g Vercel-cli
+Vercel deploy --prod --dir=dist
 ```
 
 ---
@@ -444,7 +444,7 @@ When transitioning to a new set of officers, complete the following:
 ### Accounts & Access
 - [ ] Add new officers to the **GitHub organization/repos** with appropriate roles
 - [ ] Invite new officers to the **Railway project** (for backend management)
-- [ ] Add new officers to the **vercel team**
+- [ ] Add new officers to the **Vercel team**
 - [ ] Share access to the **Cloudinary account**
 - [ ] Share access to the **Supabase project**
 - [ ] Share access to the **SendGrid account**
@@ -457,7 +457,7 @@ When transitioning to a new set of officers, complete the following:
 - [ ] Rotate all **secret keys** in the backend `.env` (APP_KEYS, JWT_SECRET, etc.)
 
 ### Environment Variables
-- [ ] Update `VITE_STRAPI_TOKEN` in vercel's environment settings after rotating the API token
+- [ ] Update `VITE_STRAPI_TOKEN` in Vercel's environment settings after rotating the API token
 - [ ] Review all env vars are current and valid
 
 ### Content
