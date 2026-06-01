@@ -480,6 +480,8 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     > &
       Schema.Attribute.Private;
+    pinnedToHighlights: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     post_author: Schema.Attribute.String;
     post_category: Schema.Attribute.Enumeration<
       ['Student Spotlight', 'Community Development', 'Opportunities']
@@ -508,7 +510,6 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.Enumeration<
       ['Academic', 'Career', 'Community', 'Celebration', 'Sports']
     >;
-    content: Schema.Attribute.Blocks;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -519,6 +520,8 @@ export interface ApiEventEvent extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::event.event'> &
       Schema.Attribute.Private;
     location: Schema.Attribute.String;
+    pinnedToHighlights: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
     time: Schema.Attribute.String;

@@ -21,9 +21,6 @@
     "date": {
       "type": "date"
     },
-    "content": {
-      "type": "blocks"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -52,6 +49,10 @@
     },
     "time": {
       "type": "string"
+    },
+    "pinnedToHighlights": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -41,6 +41,10 @@
     },
     "post_content": {
       "type": "richtext"
+    },
+    "pinnedToHighlights": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
